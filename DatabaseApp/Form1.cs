@@ -16,6 +16,8 @@ namespace DatabaseApp
         public Form1()
         {
             InitializeComponent();
+            this.AcceptButton = button1;
+            this.CancelButton = button2;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -38,6 +40,7 @@ namespace DatabaseApp
             SqlDataReader dr = komut.ExecuteReader();
             if (dr.Read())
             {
+                baglanti.Close();
                 icerik frm = new icerik();
                 frm.Show();
                 this.Visible = false;
@@ -46,8 +49,6 @@ namespace DatabaseApp
             {
                 MessageBox.Show("Yanlış kullanıcı adı veya parolası", "Uyarı");
             }
-            
-            this.AcceptButton = button1;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -57,9 +58,6 @@ namespace DatabaseApp
             {
                 Application.Exit();
             }
-            
-            
-            this.CancelButton = button2;
         }
     }
 }
